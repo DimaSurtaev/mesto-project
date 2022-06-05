@@ -1,0 +1,17 @@
+.profile__info {
+    max-height: 100%;
+    margin: 22px 0 25px 25px;
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    align-items: self-end;
+    column-gap: 18px;
+}
+@media (min-width: 320px) and (max-width: 900px) {
+    .profile__info {
+        margin: 0 19px 36px 46px;
+        grid-template-columns: 1fr 18px;
+        column-gap: 10px;
+        height: 54px;
+        align-self: center;
+    }
+}

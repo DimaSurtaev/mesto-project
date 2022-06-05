@@ -1,0 +1,16 @@
+.header__logo-image {
+    width: 100%;
+}
+@media (min-width: 320px) and (max-width: 600px) {
+    .header__logo-image {
+        width: 104px;
+        height: 24px;
+        margin-left: 27px;
+    }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+    .header__logo-image {
+        max-width: 590;
+        margin: 0 auto;
+    }
+}
