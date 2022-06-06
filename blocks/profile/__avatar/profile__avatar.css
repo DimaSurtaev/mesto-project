@@ -1,5 +1,5 @@
 .profile__avatar {
-    background-size: contain;
+    background-size: cover;
     position: relative;
     min-width: 120px;
     height: 120px;

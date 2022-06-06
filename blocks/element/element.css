@@ -1,9 +1,12 @@
 .element {
     max-width: 282px;
-    height: 361px;
     background-color: #FFFFFF;
     border-radius: 10px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 282px 79px;
+    align-items: center;
 }
 @media (min-width: 320px) and (max-width: 600px) {
     .element {
