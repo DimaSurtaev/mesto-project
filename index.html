@@ -12,57 +12,17 @@
   </header>
   <main>
     <section class="profile">
-      <a class="profile__avatar"></a>
-      <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button type="button" class="profile__button-edit"></button>
-        <p class="profile__job">Исследователь океана</p>  
+      <div class="profile__container">
+        <a class="profile__avatar"></a>
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__button-edit"></button>
+          <p class="profile__job">Исследователь океана</p>  
+        </div>
       </div>
       <button type="button" class="profile__button-add"></button>
     </section>
     <section class="elements">
-      <div class="element">
-        <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-        <div class="element__item">
-          <h2 class="element__title">Карачаевск</h2>
-          <button aria-label="like" class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images//elbrus.jpg" alt="Эльбрус">
-        <div class="element__item">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button aria-label="like" class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
-        <div class="element__item">
-          <h2 class="element__title">Домбай</h2>
-          <button aria-label="like" class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
-        <div class="element__item">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button aria-label="like" class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
-        <div class="element__item">
-          <h2 class="element__title">Домбай</h2>
-          <button aria-label="like" class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаево-Чeркесия">
-        <div class="element__item">
-          <h2 class="element__title">Карачаево-Чeркесия</h2>
-          <button aria-label="like" class="element__like" type="button"></button>
-        </div>
-      </div>
     </section>
     <div class="popup">
       <div class="popup__container">
@@ -72,14 +32,46 @@
           <fieldset class="popup__fieldset"> 
             <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
             <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Профессия">
-            <button class="popup__button" type="submit">Сохранить</button>
+            <button class="popup__button" type="button">Сохранить</button>
           </fieldset>
         </form>
       </div>              
     </div>
+    <div class="popup-add">
+      <div class="popup-add__container">
+        <button class="popup-add__close" type="button"></button>
+        <form name="profile-edit" class="popup-add__form">
+          <h2 class="popup-add__title">Новое место</h2>
+          <fieldset class="popup-add__fieldset"> 
+            <input class="popup-add__input popup-add__input_type_mesto" type="text" name="Mesto" placeholder="Название">
+            <input class="popup-add__input popup-add__input_type_link" type="text" name="Link" placeholder="Ссылка на картинку">
+            <button class="popup-add__button" type="button">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>              
+    </div>
+    <div class="popup-card"></div>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2020. Mesto Russia</p>
   </footer>
+  <template id="popup-card-template">  
+    <div class="popup-card__container">
+      <button class="popup-card__close" type="button"></button>
+      <img class="popup-card__image">
+      <p class="popup-card__title"></p>
+    </div>
+  </template>
+  <template id="element-template">
+    <div class="element">
+      <button class="element__delete" type="button"></button>
+      <img class="element__image">
+      <div class="element__item">
+        <h2 class="element__title"></h2>
+        <button class="element__like"></button>
+     </div>
+    </div>
+ </template>
+  <script src="./script.js"></script>
 </body>
 </html>

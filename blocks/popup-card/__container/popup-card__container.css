@@ -1,0 +1,10 @@
+.popup-card__container {
+    max-width: 75vw;
+    max-height: 75vh;
+    position: relative;
+}
+@media (min-width: 320px) and (max-width: 600px) {
+    .popup-card__container {
+        max-width: 282px;
+    }
+}
