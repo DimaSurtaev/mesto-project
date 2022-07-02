@@ -87,7 +87,7 @@ const initialCards = [
     }
   ]; 
 
-  initialCards.forEach(function (item) {
+  initialCards.forEach((item) => {
     renderPlace(item.name, item.link);
   });
  
