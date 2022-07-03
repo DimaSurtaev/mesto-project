@@ -26,7 +26,7 @@
     </section>
     <div class="popup popup-profile">
       <div class="popup__container">
-        <button class="popup__close" type="button" name="1"></button>
+        <button class="popup__close" type="button"></button>
         <form name="profile-edit" class="popup__form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__fieldset"> 
@@ -38,23 +38,23 @@
       </div>              
     </div>
     <div class="popup popup-add">
-      <div class="popup-add__container">
-        <button class="popup-add__close" type="button"></button>
-        <form name="profile-mesto" class="popup-add__form">
-          <h2 class="popup-add__title">Новое место</h2>
-          <fieldset class="popup-add__fieldset"> 
-            <input class="popup-add__input popup-add__input_type_mesto" type="text" name="Mesto" placeholder="Название">
-            <input class="popup-add__input popup-add__input_type_link" type="text" name="Link" placeholder="Ссылка на картинку">
-            <button class="popup-add__button" type="submit">Сохранить</button>
+      <div class="popup__container">
+        <button class="popup__close popup-add__close" type="button"></button>
+        <form name="profile-mesto" class ="popup__form popup-add__form">
+          <h2 class="popup__title">Новое место</h2>
+          <fieldset class="popup__fieldset"> 
+            <input class="popup__input popup-add__input_type_mesto" type="text" name="Mesto" placeholder="Название">
+            <input class="popup__input popup-add__input_type_link" type="text" name="Link" placeholder="Ссылка на картинку">
+            <button class="popup__button" type="submit">Сохранить</button>
           </fieldset>
         </form>
       </div>              
     </div>
-    <div class="popup popup-card">
-      <div class="popup-card__container">
-        <button class="popup-card__close" type="button"></button>
-        <img class="popup-card__image" src="1" alt="Увеличенное изображение">
-        <p class="popup-card__title"></p>
+    <div class="popup popup_type_card">
+      <div class="popup__container popup__container_type_card">
+        <button class="popup__close popup-card__close" type="button"></button>
+        <img class="popup__image-card" src="#" alt="Увеличенное изображение">
+        <p class="popup__title-card"></p>
       </div>
     </div>
   </main>
@@ -64,7 +64,7 @@
   <template id="element-template">
     <div class="element">
       <button class="element__delete" type="button"></button>
-      <img class="element__image" src="1">
+      <img class="element__image" src="#">
       <div class="element__item">
         <h2 class="element__title"></h2>
         <button class="element__like" type="button"></button>
