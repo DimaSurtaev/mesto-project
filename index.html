@@ -24,27 +24,27 @@
     </section>
     <section class="elements">
     </section>
-    <div class="popup popup-profile">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <form name="profile-edit" class="popup__form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__fieldset"> 
-            <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
-            <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Профессия">
+            <input class="popup__input popup__input_type_name" type="text" name="inputTypeName" placeholder="Имя">
+            <input class="popup__input popup__input_type_job" type="text" name="inputTypeJob" placeholder="Профессия">
             <button class="popup__button" type="submit">Сохранить</button>
           </fieldset>
         </form>
       </div>              
     </div>
-    <div class="popup popup-add">
+    <div class="popup popup_type_add">
       <div class="popup__container">
-        <button class="popup__close popup-add__close" type="button"></button>
-        <form name="profile-mesto" class ="popup__form popup-add__form">
+        <button class="popup__close popup__close_type_add" type="button"></button>
+        <form name="profile-mesto" class ="popup__form popup__form_type_add">
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__fieldset"> 
-            <input class="popup__input popup-add__input_type_mesto" type="text" name="Mesto" placeholder="Название">
-            <input class="popup__input popup-add__input_type_link" type="text" name="Link" placeholder="Ссылка на картинку">
+            <input class="popup__input popup__input_type_mesto" type="text" name="inputTypeMesto" placeholder="Название">
+            <input class="popup__input popup__input_type_link" type="text" name="inputTypeLink" placeholder="Ссылка на картинку">
             <button class="popup__button" type="submit">Сохранить</button>
           </fieldset>
         </form>
@@ -52,7 +52,7 @@
     </div>
     <div class="popup popup_type_card">
       <div class="popup__container popup__container_type_card">
-        <button class="popup__close popup-card__close" type="button"></button>
+        <button class="popup__close popup__close_type_card" type="button"></button>
         <img class="popup__image-card" src="#" alt="Увеличенное изображение">
         <p class="popup__title-card"></p>
       </div>

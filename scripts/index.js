@@ -1,9 +1,9 @@
-const popupProfile = document.querySelector('.popup-profile');/* попап профиля */
+const popupProfile = document.querySelector('.popup_type_profile');/* попап профиля */
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 
-const popupAdd = document.querySelector('.popup-add'); /* попап нового места */
-const popupAddForm = document.querySelector('.popup-add__form');        
+const popupAdd = document.querySelector('.popup_type_add'); /* попап нового места */
+const popupAddForm = document.querySelector('.popup__form_type_add');        
 /* шаблон макета */
 const elementContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
@@ -18,16 +18,13 @@ const buttonPopupProfile = document.querySelector('.profile__button-edit');
 const buttonPopupMesto = document.querySelector('.profile__button-add');
 /* кнопки закрытия попапов */
 const buttonClosepProfile = document.querySelector('.popup__close');
-const buttonCloseAdd = document.querySelector('.popup-add__close');
-const buttonCloseCard = document.querySelector('.popup-card__close');
+const buttonCloseAdd = document.querySelector('.popup__close_type_add');
+const buttonCloseCard = document.querySelector('.popup__close_type_card');
 
-/* кнопки внутри попапов */
-const buttonPopupProfileSubmit = document.querySelector('.popup__button');
-const buttonPopupMestoSubmit = document.querySelector('.popup-add__button');
 
 /* инпуты формы нового места */
-const mestoName = document.querySelector('.popup-add__input_type_mesto');
-const mestoLink = document.querySelector('.popup-add__input_type_link');
+const mestoName = document.querySelector('.popup__input_type_mesto');
+const mestoLink = document.querySelector('.popup__input_type_link');
 
 
 /* открытие попапов */
@@ -46,12 +43,16 @@ buttonClosepProfile.addEventListener ('click', ()=> closePopup(popupProfile))
 buttonCloseAdd.addEventListener ('click', ()=> closePopup(popupAdd))
 buttonCloseCard.addEventListener('click',() => closePopup(popupCard));
 
+/* открыть попапа профиля */
+function openPropfilePopup() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+  openPopup(popupProfile);
+  }
 /* редактирование профиля */
 const popupEditForm = document.querySelector('.popup__form');
 const nameInput = popupEditForm.querySelector('.popup__input_type_name');
-nameInput.value = profileName.textContent;
-const jobInput =  popupEditForm.querySelector('.popup__input_type_job');
-jobInput.value = profileJob.textContent;
+const jobInput =  popupEditForm.querySelector('.popup__input_type_job');;
 const name = document.querySelector('.profile__name');
 const job = document.querySelector('.profile__job');
 
