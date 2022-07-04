@@ -43,18 +43,21 @@ buttonClosepProfile.addEventListener ('click', ()=> closePopup(popupProfile))
 buttonCloseAdd.addEventListener ('click', ()=> closePopup(popupAdd))
 buttonCloseCard.addEventListener('click',() => closePopup(popupCard));
 
-/* открыть попапа профиля */
-function openPropfilePopup() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  openPopup(popupProfile);
-  }
 /* редактирование профиля */
 const popupEditForm = document.querySelector('.popup__form');
 const nameInput = popupEditForm.querySelector('.popup__input_type_name');
 const jobInput =  popupEditForm.querySelector('.popup__input_type_job');;
 const name = document.querySelector('.profile__name');
 const job = document.querySelector('.profile__job');
+
+/* открыть попапа профиля */
+function openPropfilePopup() {
+  nameInput.value = name.textContent;
+  jobInput.value = job.textContent;
+
+  openPopup(popupProfile);
+}
+buttonPopupProfile.addEventListener('click', openPropfilePopup);
 
 function submitPopupProfile  (evt) {
     evt.preventDefault();
