@@ -8,6 +8,7 @@ const popupAddForm = document.querySelector('.popup__form_type_add');
 const elementContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
 
+
 const popupCard = document.querySelector('.popup_type_card'); /* попап увеличенной картинки */
 const popupCardContainer = popupCard.querySelector('.popup__container_type_card');
 const popupCardImage = popupCard.querySelector('.popup__image-card');
@@ -31,9 +32,18 @@ const buttonPopupMesto = document.querySelector('.profile__button-add');
 const buttonClosepProfile = document.querySelector('.popup__close');
 const buttonCloseAdd = document.querySelector('.popup__close_type_add');
 const buttonCloseCard = document.querySelector('.popup__close_type_card');
+
+
+const formSelectorClass = '.popup__form';
+const inputSelectorClass = '.popup__input';
+const submitButtonSelectorClass = '.popup__button';
+const inactiveButtonClass = 'popup__button_disabled';
+const inputErrorClass = 'popup__error';
+const errorClass = 'popup__error_visible';
   
 
-export {popupProfile,
+export 
+    {popupProfile,
     profileName,
     profileJob,
     popupAdd,
@@ -49,4 +59,16 @@ export {popupProfile,
     buttonClosepProfile,
     buttonCloseAdd,
     buttonCloseCard,
-    mestoName,mestoLink,popupEditForm,nameInput,jobInput,name,job};
+    mestoName,
+    mestoLink,
+    popupEditForm,
+    nameInput,
+    jobInput,
+    name,
+    job,
+    formSelectorClass,
+    inputSelectorClass,
+    submitButtonSelectorClass,
+    inactiveButtonClass,
+    inputErrorClass,
+    errorClass};

@@ -9,7 +9,6 @@
     outline:none;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     padding-bottom: 13px;
-    margin-bottom: 30px;
 }
 .popup__input:nth-child(2n) {
     margin-bottom: 48px;

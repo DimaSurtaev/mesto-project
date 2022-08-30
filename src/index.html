@@ -29,10 +29,29 @@
         <form name="profile-edit" class="popup__form" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__fieldset"> 
-            <input id="name" class="popup__input popup__input_type_name" type="text" name="name" minlength="2" maxlength="40" pattern="^[а-яА-ЯёЁa-zA-Z -]+$" data-error="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"  placeholder="Имя" required>
-            <span id="error-name" class="popup__error popup__error_visible"></span>
-            <input id="job" class="popup__input popup__input_type_job" type="text" name="job" minlength="2" maxlength="200" pattern="^[а-яА-ЯёЁa-zA-Z +@-.]+$" placeholder="Профессия" required>
-            <span id="error-job" class="popup__error popup__error_visible"></span>
+            
+            <input id="name" class="popup__input popup__input_type_name" 
+            type="text" 
+            name="name" 
+            minlength="2" 
+            maxlength="40" 
+            pattern="^[a-zA-Zа-яА-Я- ]+$" 
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"  
+            placeholder="Имя" 
+            required>
+            <span class="name-error popup__error_visible"></span>
+
+            <input id="job" class="popup__input popup__input_type_job" 
+            type="text" 
+            name="job" 
+            minlength="2" 
+            maxlength="200" 
+            pattern="^[a-zA-Zа-яА-Я- ]+$" 
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+            placeholder="Профессия" 
+            required>
+            <span class="job-error popup__error_visible"></span>
+
             <button class="popup__button" type="submit">Сохранить</button>
           </fieldset>
         </form>
@@ -44,10 +63,21 @@
         <form name="profile-mesto" class ="popup__form popup__form_type_add" novalidate>
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__fieldset"> 
-            <input id="mesto" class="popup__input popup__input_type_mesto" type="text" name="mesto" minlength="2" maxlength="30" pattern="^[а-яА-ЯёЁa-zA-Z -]+$" data-error="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" placeholder="Название" required>
-            <span id="error-mesto" class="popup__error popup__error_visible"></span>
+            <input id="mesto" class="popup__input popup__input_type_mesto" 
+            type="text" 
+            name="mesto" 
+            minlength="2" 
+            maxlength="30" 
+            pattern="^[a-zA-Zа-яА-Я- ]+$"
+            data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" 
+            placeholder="Название" 
+            required>
+            <span class="mesto-error popup__error_visible"></span>
+
             <input id="link" class="popup__input popup__input_type_link" type="url" name="link" placeholder="Ссылка на картинку"  required>
-            <span id="error-link" class="popup__error popup__error_visible"></span>
+            <span  class="link-error popup__error_visible"></span>
+
+
             <button class="popup__button" type="submit">Сохранить</button>
           </fieldset>
         </form>

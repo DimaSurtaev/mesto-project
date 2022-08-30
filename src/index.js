@@ -1,5 +1,6 @@
 import './pages/index.css';
-import {popupProfile,
+import
+  {popupProfile,
   popupAdd,
   popupAddForm,
   elementContainer,
@@ -9,12 +10,24 @@ import {popupProfile,
   buttonClosepProfile,
   buttonCloseAdd,
   buttonCloseCard,
-  mestoName,mestoLink,popupEditForm,nameInput,jobInput,name,job} from './components/utils.js'
+  mestoName,
+  mestoLink,
+  popupEditForm,
+  nameInput,
+  jobInput,
+  name,
+  job,
+  formSelectorClass,
+  inputSelectorClass,
+  submitButtonSelectorClass,
+  inactiveButtonClass,
+  inputErrorClass,
+  errorClass} from './components/utils.js'
 
 import {addMesto} from './components/cards.js'
 
 
-import {enableValidation} from './components/validate.js';
+import {enableValidation,deactivateButton} from './components/validate.js';
 
 import {openPopup,closePopup} from './components/modal.js';
  
@@ -32,6 +45,8 @@ function submitPopupProfile  (evt) {
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
     closePopup(popupProfile);
+
+     
 }
 popupEditForm.addEventListener('submit', submitPopupProfile); 
 
@@ -72,7 +87,10 @@ function addNewMesto(evt) {
   evt.preventDefault();
   renderPlace(mestoName.value, mestoLink.value);
   popupAddForm.reset();
-  closePopup(popupAdd);
+  const button = popupAddForm.querySelector('.popup__button');
+  button.setAttribute('disabled', 'disabled'); 
+  button.classList.add('popup__button_disabled'); 
+  closePopup(popupAdd);     
 }
 popupAddForm.addEventListener('submit', addNewMesto);
 
@@ -90,13 +108,14 @@ buttonClosepProfile.addEventListener ('click', ()=> closePopup(popupProfile))
 buttonCloseAdd.addEventListener ('click', ()=> closePopup(popupAdd))
 buttonCloseCard.addEventListener('click',() => closePopup(popupCard));
 
-  enableValidation({
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__error",
-    errorClass: "popup__error_visible",
-  });
-  console.log(enableValidation);
+
+
+enableValidation({
+  formSelectorClass,
+  inputSelectorClass,
+  submitButtonSelectorClass,
+  inactiveButtonClass,
+  inputErrorClass,
+  errorClass,
+});
 

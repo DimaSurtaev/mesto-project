@@ -4,10 +4,10 @@ import {openPopup} from '../components/modal.js';
 /* Добавление карточки со всем функционалом*/
 function addMesto (mesto,link) {
     const element = elementTemplate.querySelector('.element').cloneNode(true);
-    const deletElement = element.querySelector('.element__delete');
+    const elementDelete = element.querySelector('.element__delete');
     const like = element.querySelector('.element__like');
     like.addEventListener('click',likeCard);
-    deletElement.addEventListener('click',deleteCard);
+    elementDelete.addEventListener('click',deleteCard);
 
     const elementName = element.querySelector('.element__title');
     const elementImage = element.querySelector('.element__image');

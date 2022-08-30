@@ -15,16 +15,16 @@ const modal = {
 }
 const  closeClick = (evt) => {
     if (evt.currentTarget === evt.target) {
-      closePopup(popupProfile);
-      closePopup(popupAdd);
+      closePopup(evt.currentTarget);
     };
   }
   const closeEsc = (evt) => {
     if (evt.key === 'Escape') {
-        closePopup(popupProfile);
-        closePopup(popupAdd);
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup); 
       };
   }
+
   export const openPopup = modal.openPopup;
   export const closePopup = modal.closePopup;
   export {closeClick,closeEsc}
