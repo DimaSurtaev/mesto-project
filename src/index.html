@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" href="#">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
 </head>
@@ -39,7 +40,7 @@
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"  
             placeholder="Имя" 
             required>
-            <span class="name-error popup__error_visible"></span>
+            <span class="name-error popup__error_hidden popup__error_visible"></span>
 
             <input id="job" class="popup__input popup__input_type_job" 
             type="text" 
@@ -50,7 +51,7 @@
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             placeholder="Профессия" 
             required>
-            <span class="job-error popup__error_visible"></span>
+            <span class="job-error popup__error_hidden popup__error_visible"></span>
 
             <button class="popup__button" type="submit">Сохранить</button>
           </fieldset>
@@ -72,10 +73,10 @@
             data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" 
             placeholder="Название" 
             required>
-            <span class="mesto-error popup__error_visible"></span>
+            <span class="mesto-error popup__error_hidden popup__error_visible"></span>
 
             <input id="link" class="popup__input popup__input_type_link" type="url" name="link" placeholder="Ссылка на картинку"  required>
-            <span  class="link-error popup__error_visible"></span>
+            <span  class="link-error popup__error_hidden  popup__error_visible"></span>
 
 
             <button class="popup__button" type="submit">Сохранить</button>
@@ -104,8 +105,6 @@
      </div>
     </div>
  </template>
-  <script type="module" src="./scripts/index.js"></script>
-  <script type="module" src="./scripts/components/modal.js"></script>
   
 </body>
 </html>
