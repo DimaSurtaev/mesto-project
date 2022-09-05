@@ -1,0 +1,22 @@
+.profile__button-avatar {
+    padding: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+}
+.profile__button-avatar:hover{
+    background-color: rgba(0,0,0, .8);
+    background-image: url('../../../images/pen-avatar.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media (min-width: 320px) and (max-width: 900px) {
+    .profile__button-avatar {
+        margin: 0 auto 26px;
+        align-self: center;
+    }
+}

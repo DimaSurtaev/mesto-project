@@ -27,10 +27,12 @@ const showInputError = (formElement, inputElement, errorMessage, inputErrorClass
 
 export const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  console.log(errorElement);
   errorElement.textContent = '';
   errorElement.classList.remove(errorClass);
   inputElement.classList.remove(inputErrorClass);
 };
+
 
 const isValid = (formElement, inputElement, inputErrorClass, errorClass) => {
   if (inputElement.validity.patternMismatch) {
