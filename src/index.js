@@ -61,8 +61,6 @@ import {
 import {
     openPopup,
     closePopup,
-    getConfirm,
-    openImagePopup
 } from './components/modal.js';
 /*слушатели на закрытие попапов */
 buttonClosepProfile.addEventListener('click', () => closePopup(popupProfile))
@@ -174,50 +172,6 @@ const avatarHandler = (e) => {
 avatarProfileButton.addEventListener('click', avatarButtonHandler);
 avatarFormEl.addEventListener('submit', avatarHandler);
 /**************Карточки****************/
-const popupConfirm = document.querySelector('#popup-confirm'); 
-export const likeCardActive = 'element__like_active';
-
-export const likeButtonCard = (e) => {
-    const {
-        id
-    } = e.target.dataset;
-    const likeContainer = e.target.closest('.element')
-        .querySelector('.element__like-counter');
-    const liked = e.target.classList.contains(likeCardActive);
-  
-    if (liked) {
-        unlikeCard(id)
-            .then((element) => {
-                e.target.classList.remove(likeCardActive);
-                likeContainer.textContent = element.likes.length;
-            });
-    } else {
-        likeCard(id)
-            .then((element) => {
-                e.target.classList.add(likeCardActive);
-                likeContainer.textContent = element.likes.length;
-            })
-            .catch((error) => console.log(error));
-    }
-  };
-
-export const handleRemoveCardClick = (e) => {
-    openPopup(popupConfirm);
-    getConfirm(popupConfirm, () => {
-        const {
-            id
-        } = e.target.dataset;
-        deleteCard(id)
-            .then(() => {
-                e.target.closest('.element')
-                    .remove();
-                closePopup(popupConfirm);
-            })
-            .catch((error) => console.log(error));
-    });
-    
-  };
-
 const newMestoButtonHandler = () => {
     clearForm({
         formElement: popupAddFormIdEl,
@@ -249,8 +203,6 @@ const formNewCardSubmitHandler = (e) => {
                 id: element._id,
                 ownCard: true,
             });
-            const imageEL = cardNode.querySelector('.element__image');
-            imageEL.addEventListener('click', () => openImagePopup(element.link, element.name));
             addCardToContainer(cardNode, elementContainer);
             closePopup(popupAddIdEl);
         })
@@ -261,7 +213,7 @@ const formNewCardSubmitHandler = (e) => {
 };
 const renderCards = (cards = []) => {
     const profileId = getProfileId();
-
+    
     cards.slice()
         .reverse()
         .forEach((element) => {
@@ -273,8 +225,6 @@ const renderCards = (cards = []) => {
                 ownCard: (profileId === element.owner._id),
                 liked: (element.likes.find((user) => user._id === profileId)),
             })       
-            const imageEL = cardNode.querySelector('.element__image');
-            imageEL.addEventListener('click', () => openImagePopup(element.link, element.name));
             addCardToContainer(cardNode, elementContainer);
         });
 };   
@@ -306,7 +256,8 @@ fetchUserInfo()
     })
     .then(() => {
         fetchCards()
-            .then(renderCards);
+            .then(renderCards)
+            .catch();
     })
     .catch((errorMessage) => {
         console.log(errorMessage);
