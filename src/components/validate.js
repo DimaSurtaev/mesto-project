@@ -72,7 +72,12 @@ const setEventListeners = (
         });
     });
 };
-
+export function hideInputErrors(formElement, inputSelectorClass, inputErrorClass, errorClass) {
+    const inputList = Array.from(formElement.querySelectorAll(inputSelectorClass));
+    inputList.forEach((inputElement) => {
+        hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+    });
+}
 export const enableValidation = ({
     formSelectorClass,
     inputSelectorClass,

@@ -13,3 +13,6 @@
 .element__delete:hover {
     opacity: .6;
 }
+.element__delete:disabled {
+    display: none;
+}

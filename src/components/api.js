@@ -7,7 +7,7 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-const response = (res) => {
+const checkResponse = (res) => {
   if (res.status === 200) {
       return res.json();
   }
@@ -19,14 +19,14 @@ export const fetchUserInfo = () => fetch(
           headers
       },
   )
-  .then((res) => response(res));
+  .then((res) => checkResponse(res));
 
 export const fetchCards = () => fetch(
       `${config.baseUrl}/cards`, {
           headers
       },
   )
-  .then((res) => response(res));
+  .then((res) => checkResponse(res));
 
 export const updateUserData = ({
       name,
@@ -41,7 +41,7 @@ export const updateUserData = ({
           }),
       },
   )
-  .then(response);
+  .then(checkResponse);
 
 export const createCard = ({
       name,
@@ -56,7 +56,7 @@ export const createCard = ({
           }),
       },
   )
-  .then(response);
+  .then(checkResponse);
 
 export const deleteCard = (id) => fetch(
       `${config.baseUrl}/cards/${id}`, {
@@ -67,7 +67,7 @@ export const deleteCard = (id) => fetch(
           }),
       },
   )
-  .then(response);
+  .then(checkResponse);
 
 export const likeCard = (id) => fetch(
       `${config.baseUrl}/cards/likes/${id}`, {
@@ -78,7 +78,7 @@ export const likeCard = (id) => fetch(
           }),
       },
   )
-  .then(response);
+  .then(checkResponse);
 
 export const unlikeCard = (id) => fetch(
       `${config.baseUrl}/cards/likes/${id}`, {
@@ -89,7 +89,7 @@ export const unlikeCard = (id) => fetch(
           }),
       },
   )
-  .then(response);
+  .then(checkResponse);
 
 export const updateAvatar = (avatar) => fetch(
       `${config.baseUrl}/users/me/avatar`, {
@@ -100,4 +100,4 @@ export const updateAvatar = (avatar) => fetch(
           }),
       },
   )
-  .then(response);
+  .then(checkResponse);

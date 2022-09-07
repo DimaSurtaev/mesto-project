@@ -6,29 +6,29 @@ const popupImageTitleEl = document.querySelector('.popup__title-card');
 const modal = {
     openPopup: function(popup) {
         popup.classList.add('popup_opened');
-        document.addEventListener('keydown', closeEsc);
-        popup.addEventListener('mousedown', closeClick);
+        document.addEventListener('keydown', closeByEscPress);
+        popup.addEventListener('mousedown', closeByOverlayClick);
     },
     closePopup: function(popup) {
         popup.classList.remove('popup_opened');
-        popup.removeEventListener('keydown', closeEsc);
-        document.removeEventListener('mousedown', closeClick);
+        popup.removeEventListener('keydown', closeByEscPress);
+        document.removeEventListener('mousedown', closeByOverlayClick);
     },
 
 }
-const closeClick = (evt) => {
+const closeByOverlayClick = (evt) => {
     if (evt.currentTarget === evt.target) {
         closePopup(evt.currentTarget);
     };
 }
-const closeEsc = (evt) => {
+const closeByEscPress = (evt) => {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     };
 }
 export const getConfirm = (popup, handleSubmit) => {
-    const confirmForm = popup.querySelector('.popup__form');
+    const confirmForm = popup.querySelector('.popup');
     const handleConfirm = (e) => {
         e.preventDefault();
         handleSubmit();
@@ -69,6 +69,6 @@ export const openImagePopup = (imageSrc, headingText) => {
 export const openPopup = modal.openPopup;
 export const closePopup = modal.closePopup;
 export {
-    closeClick,
-    closeEsc
+    closeByOverlayClick,
+    closeByEscPress
 }

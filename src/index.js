@@ -40,8 +40,7 @@ import {
     buttonCloseConfirm
 } from './components/utils.js'
 import {
-    addMesto,
-    popupConfirm
+    createCardNode
 } from './components/cards.js'
 import {
     fetchUserInfo,
@@ -49,15 +48,21 @@ import {
     updateAvatar,
     createCard,
     fetchCards,
+    deleteCard,
+    likeCard,
+    unlikeCard
 } from './components/api.js'
 import {
     enableValidation,
     deactivateButton,
-    hideInputError
+    hideInputError,
+    hideInputErrors
 } from './components/validate.js';
 import {
     openPopup,
-    closePopup
+    closePopup,
+    getConfirm,
+    openImagePopup
 } from './components/modal.js';
 /*слушатели на закрытие попапов */
 buttonClosepProfile.addEventListener('click', () => closePopup(popupProfile))
@@ -80,6 +85,7 @@ function renderUserData({
     profileJob.textContent = about;
 }
 const getProfileId = () => profileEl.dataset.id;
+
 const updateProfileData = ({
         name,
         about,
@@ -131,25 +137,8 @@ function setAvatar({
     profileAvatar.src = avatar;
     profileAvatar.alt = alt;
 }
-fetchUserInfo()
-    .then((user) => {
-        renderUserData({
-            name: user.name,
-            about: user.about,
-            id: user._id,
-        });
-        setAvatar({
-            avatar: user.avatar,
-            alt: user.name,
-        });
-    });
 
-function hideInputErrors(formElement, inputSelectorClass, inputErrorClass, errorClass) {
-    const inputList = Array.from(formElement.querySelectorAll(inputSelectorClass));
-    inputList.forEach((inputElement) => {
-        hideInputError(formElement, inputElement, inputErrorClass, errorClass);
-    });
-}
+
 const clearForm = ({
     formElement,
     inputSelectorClass,
@@ -174,15 +163,61 @@ const avatarHandler = (e) => {
                 avatar: user.avatar,
                 alt: user.name,
             });
+            closePopup(avatarPopupId);
         })
+        .catch((error) => console.log(error))
         .finally(() => {
             switchText(avatarSubmit, prevText);
-            closePopup(avatarPopupId);
+            
         });
 };
 avatarProfileButton.addEventListener('click', avatarButtonHandler);
 avatarFormEl.addEventListener('submit', avatarHandler);
 /**************Карточки****************/
+const popupConfirm = document.querySelector('#popup-confirm'); 
+export const likeCardActive = 'element__like_active';
+
+export const likeButtonCard = (e) => {
+    const {
+        id
+    } = e.target.dataset;
+    const likeContainer = e.target.closest('.element')
+        .querySelector('.element__like-counter');
+    const liked = e.target.classList.contains(likeCardActive);
+  
+    if (liked) {
+        unlikeCard(id)
+            .then((element) => {
+                e.target.classList.remove(likeCardActive);
+                likeContainer.textContent = element.likes.length;
+            });
+    } else {
+        likeCard(id)
+            .then((element) => {
+                e.target.classList.add(likeCardActive);
+                likeContainer.textContent = element.likes.length;
+            })
+            .catch((error) => console.log(error));
+    }
+  };
+
+export const handleRemoveCardClick = (e) => {
+    openPopup(popupConfirm);
+    getConfirm(popupConfirm, () => {
+        const {
+            id
+        } = e.target.dataset;
+        deleteCard(id)
+            .then(() => {
+                e.target.closest('.element')
+                    .remove();
+                closePopup(popupConfirm);
+            })
+            .catch((error) => console.log(error));
+    });
+    
+  };
+
 const newMestoButtonHandler = () => {
     clearForm({
         formElement: popupAddFormIdEl,
@@ -195,6 +230,7 @@ const newMestoButtonHandler = () => {
 };
 const addCardToContainer = (element, container) => {
     container.prepend(element);
+
 };
 const formNewCardSubmitHandler = (e) => {
     e.preventDefault();
@@ -204,15 +240,17 @@ const formNewCardSubmitHandler = (e) => {
     switchText(buttonAddNewMesto, 'Сохранение...');
     createCard({
             name,
-            link,
+            link
         })
         .then((element) => {
-            const cardNode = addMesto({
+            const cardNode = createCardNode({
                 heading: element.name,
                 imageLink: element.link,
                 id: element._id,
                 ownCard: true,
             });
+            const imageEL = cardNode.querySelector('.element__image');
+            imageEL.addEventListener('click', () => openImagePopup(element.link, element.name));
             addCardToContainer(cardNode, elementContainer);
             closePopup(popupAddIdEl);
         })
@@ -223,20 +261,24 @@ const formNewCardSubmitHandler = (e) => {
 };
 const renderCards = (cards = []) => {
     const profileId = getProfileId();
+
     cards.slice()
         .reverse()
         .forEach((element) => {
-            const cardNode = addMesto({
+            const cardNode = createCardNode({
                 heading: element.name,
                 imageLink: element.link,
                 likes: element.likes.length,
                 id: element._id,
                 ownCard: (profileId === element.owner._id),
                 liked: (element.likes.find((user) => user._id === profileId)),
-            });
+            })       
+            const imageEL = cardNode.querySelector('.element__image');
+            imageEL.addEventListener('click', () => openImagePopup(element.link, element.name));
             addCardToContainer(cardNode, elementContainer);
         });
-};
+};   
+
 popupAddFormIdEl.addEventListener('submit', formNewCardSubmitHandler);
 buttonPopupMesto.addEventListener('click', newMestoButtonHandler);
 /**************************************************/
@@ -249,6 +291,7 @@ enableValidation({
     inputErrorClass,
     errorClass,
 });
+
 fetchUserInfo()
     .then((user) => {
         renderUserData({
