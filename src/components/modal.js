@@ -28,7 +28,7 @@ const closeByEscPress = (evt) => {
     };
 }
 export const getConfirm = (popup, handleSubmit) => {
-    const confirmForm = popup.querySelector('.popup');
+    const confirmForm = popup.querySelector('#popup-confirm');
     const handleConfirm = (e) => {
         e.preventDefault();
         handleSubmit();
