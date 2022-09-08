@@ -1,3 +1,7 @@
+const popupCardImageId = document.querySelector('#popup-card')
+const popupImageEl = popupCardImageId.querySelector('.popup__image-card');
+const popupImageTitleEl = document.querySelector('.popup__title-card');
+
 /* открытие и закрытие попапов */
 const modal = {
     openPopup: function(popup) {
@@ -43,8 +47,23 @@ export const getConfirm = (popup, handleSubmit) => {
     });
 };
 
+function fillImage({
+    imageSrc,
+    headingText,
+    imageAlt = headingText,
+}) {
+    popupImageEl.src = imageSrc;
+    popupImageEl.alt = imageAlt;
+    popupImageTitleEl.textContent = headingText;
+}
 
-
+export const openImagePopup = (imageSrc, headingText) => {
+    fillImage({
+        imageSrc,
+        headingText,
+    });
+    openPopup(popupCardImageId);
+};
 
 
 export const openPopup = modal.openPopup;
